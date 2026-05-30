@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 400,
+    "data": {"url": "data/Digital_access_2025.csv"},
+    "transform": [
+        {
+            "calculate": "toNumber(datum.Household_Internet_access)",
+            "as": "Internet_access"
+        }
+    ],
+    "title": {"text":"Proportion of household internet access by state in 2025"},
+    "encoding": {
+        "y": {
+            "field": "State",
+            "type": "nominal",
+            "sort": {"field":"Internet_access","order":"descending"},
+            "title": "State"
+        },
+
+        "x": {
+            "field": "Internet_access",
+            "type": "quantitative",
+            "title": "Household internet access (%)",
+            "scale": {"domain":[0,100]}
+        }
+  },
+    "layer": [
+        {
+            "mark": {"type":"rule","strokeWidth":3},    
+            "encoding": {"x":{"datum":0},"x2":{"field":"Internet_access"}}
+        },
+        {
+            "mark": {"type":"circle","size": 250}
+        },
+        {
+            "mark": {"type":"text","fontSize": 12, "dx":25},
+            "encoding": {"text":{"field":"Internet_access","format":".2f"}}    
+        }
+    ]
+}
