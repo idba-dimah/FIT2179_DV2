@@ -1,0 +1,37 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 450,
+    "data": {"url": "data/Digital_access_timeseries.csv"},
+    "transform": [
+        {"filter": "datum.Year== 2022|| datum.Year== 2025"},
+        {"pivot": "Year", "value": "Household_Internet_access","groupby": ["State"]},
+        {"calculate": "datum['2025']- datum['2022']","as": "Change"},
+        {"fold": ["2022","2025"],"as": ["Year", "Household_Internet_access"]}
+    ],
+    "title": {"text": "Internet access change by state 2022-2025","subtitle":"*Hover over the points to see the states and their change if any"},
+    "mark": {"type": "line","point": true,"strokeWidth":2},
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year",
+            "axis": {"labelAngle":0}
+        },
+        "y": {
+            "field": "Household_Internet_access",
+            "type": "quantitative",
+            "title": "Household internet access (%)",
+            "scale": {"domain":[89,100]}
+        },
+        "detail": {"field": "State","type": "nominal"},
+        "color": {"field": "State","type": "nominal","legend":null},
+
+        "tooltip": [
+            {"field": "State","type": "nominal"},
+            {"field": "Year","type": "ordinal"},
+            {"field": "Household_Internet_access","type": "quantitative","title": "Internet access(%)","format":".2f"},
+            {"field": "Change","type": "quantitative","title": "Change 2022-2025(%)","format": ".2f"}
+        ]
+    }
+}
