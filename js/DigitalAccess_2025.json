@@ -1,0 +1,44 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 500,
+    "data": {"url": "data/Digital_access_2025.csv"},
+    "transform": [
+        {
+            "fold": ["Household_Internet_access","Phone_access","Computer_access"],
+            "as": ["Access_type", "Access_value"]
+        }
+    ],
+    "title":{"text":"Digital access proportion by state 2025"},
+    "mark":{"type":"rect"},
+    "encoding":{
+        "y": {
+            "field": "State",
+            "type": "nominal",
+            "title": "State"
+        },
+        "x": {
+            "field": "Access_type",
+            "type": "nominal",
+            "title": "Type",
+            "axis": {"labelAngle":0}
+        },
+        "color": {
+            "field": "Access_value",
+            "type": "quantitative",
+            "title": "Access proportion",
+            "scale": {"scheme": "purples"}
+        },
+        "tooltip": [
+            {"field": "State", "type": "nominal"},
+            {"field": "Access_type", "type": "nominal", "title": "Type"},
+            {"field": "Access_value", "type": "quantitative", "title": "Access(%)", "format": ".2f"}
+        ]
+    }
+}
+
+
+  
+
+ 
+  
