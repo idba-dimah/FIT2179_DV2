@@ -9,3 +9,7 @@ vegaEmbed("#DigitalAccess_2025", Digital2025).then(function(result) {
 var InternetMHDI2024 = "js/Internet_MHDI_2024.json";
 vegaEmbed("#Internet_MHDI_2024", InternetMHDI2024).then(function(result) {
 }).catch(console.error);
+
+var DigitalTime = "js/DigitalAccess_Time.json";
+vegaEmbed("#DigitalAccess_Time", DigitalTime).then(function(result) {
+}).catch(console.error);

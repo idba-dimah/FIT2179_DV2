@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 400,
+    "data": {"url": "data/Digital_access_timeseries.csv"},
+    "transform": [
+        {
+            "fold": ["Household_Internet_access","Phone_access","Computer_access"],
+            "as": ["Access_type","Access_value"]
+        }
+    ],
+    "title": {"text": "Digital access in Malaysia 2022-2025","subtitle": "Average across the states & Federal territories"},
+    "mark": {"type": "line", "point": true, "strokeWidth": 3},
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year",
+            "axis": {"labelAngle":0}
+        },
+        "y": {
+            "aggregate": "mean",
+            "field": "Access_value",
+            "type": "quantitative",
+            "title": "Average access (%)",
+            "scale": {"domain": [70, 100]}
+        },
+
+        "color": {
+            "field": "Access_type",
+            "type": "nominal",
+            "title": "Type",
+            "scale": {"scheme": "purples"}
+        },
+        "tooltip": [
+            {"field": "Year","type": "ordinal"},
+            {"field": "Access_type","type": "nominal","title": "Access type"},
+            {"aggregate": "mean","field": "Access_value","type": "quantitative","title": "Average access (%)","format": ".3f"}
+        ]
+    }
+}
