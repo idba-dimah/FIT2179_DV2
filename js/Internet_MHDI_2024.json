@@ -1,0 +1,74 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 550,
+    "height": 450,
+    "data": {"url": "data/Household_internet_access&MHDI_2024.csv"},
+    "title": {"text": "Internet access and MHDI by state","subtitle":"Each point is a state"},
+    "params":[
+        {
+            "name": "SelectedState",
+            "value": "All",
+            "bind": {
+                "input":"select",
+                "options": [
+                    "All",
+                    "Johor",
+                    "Kedah",
+                    "Kelantan",
+                    "Melaka",
+                    "Negeri Sembilan",
+                    "Pahang",
+                    "Perak",
+                    "Perlis",
+                    "Pulau Pinang",
+                    "Sabah",
+                    "Sarawak",
+                    "Selangor",
+                    "Terengganu",
+                    "W.P. Kuala Lumpur",
+                    "W.P. Labuan",
+                    "W.P. Putrajaya"
+                ],
+                "name":"Highlight state-"
+            }
+        }
+    ],
+    "encoding":{
+        "x": {
+            "field": "Household_Internet_access",
+            "type": "quantitative",
+            "title": "Household Internet Access (%)",
+            "scale": {"domain":[90,100]}
+        },
+        "y": {
+            "field": "MHDI",
+            "type": "quantitative",
+            "title": "Human Development Index",
+            "scale": {"zero": false}
+        }
+    },
+    "layer": [
+        {
+            "mark": {"type": "point","color":"purple","size":100, "filled":true},
+            "encoding": {
+                "fillOpacity": {
+                    "condition": {"test": "SelectedState=='All'|| datum.State==SelectedState","value":1},
+                    "value":0.25
+                },
+              
+                "tooltip": [
+                    {"field": "State", "type": "nominal"},
+                    {"field": "Household_Internet_access", "type": "quantitative","title": "Internet Access (%)","format": ".2f"},
+                    {"field": "MHDI","type": "quantitative","title": "Human Development Index","format": ".3f"}
+                ]
+            }
+        },
+        {
+            "mark": {"type": "line","color":"black"},
+            "transform": [
+                {"regression": "MHDI","on": "Household_Internet_access","extent":[90,100]}
+            ]
+        }
+    ]
+}
+
