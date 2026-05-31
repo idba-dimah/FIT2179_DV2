@@ -21,3 +21,7 @@ vegaEmbed("#Internet_change_state", InternetChangeState).then(function(result) {
 var MHDIState2024 = "js/MHDI_State_2024.json";
 vegaEmbed("#MHDI_State_2024", MHDIState2024).then(function(result) {
 }).catch(console.error);
+
+var MHDIChangeState = "js/MHDI_change_State.json";
+vegaEmbed("#MHDI_change_State", MHDIChangeState).then(function(result) {
+}).catch(console.error);

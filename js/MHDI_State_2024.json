@@ -8,13 +8,13 @@
         "y": {
             "field": "State",
             "type": "nominal",
-            "sort": {"field": "MHDI_2024","order": "descending"},
+            "sort": {"field": "2024","order": "descending"},
             "title": "State"
         },
         "x": {
-            "field": "MHDI_2024",
+            "field": "2024",
             "type": "quantitative",
-            "title": "Malaysia Human Development Index",
+            "title": "Human Development Index",
             "scale": {"domain": [0.7,0.95]}
         }
     },
@@ -24,14 +24,14 @@
             "encoding": {
                 "tooltip": [
                     {"field": "State","type": "nominal"},
-                    {"field": "MHDI_2024","type": "quantitative","title": "HDI","format": ".3f"}
+                    {"field": "2024","type": "quantitative","title": "HDI","format": ".3f"}
                 ]
             }
         },
         {      
             "mark": {"type": "text","fontSize": 12,"dx": 25},
             "encoding": {
-                "text": {"field": "MHDI_2024","type": "quantitative","format": ".3f"}
+                "text": {"field": "2024","type": "quantitative","format": ".3f"}
             }
         }
     ]

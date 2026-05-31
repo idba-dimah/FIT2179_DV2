@@ -1,0 +1,34 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 450,
+    "data": {"url": "data/MHDI_State_2024&23.csv"},
+    "transform": [
+        {"calculate": "datum['2024']- datum['2023']","as":"Change"},
+        {"fold": ["2023","2024"],"as":["Year","MHDI_value"]}
+    ],
+    "title": {"text":"MHDI change by state 2023-2024","subtitle": "*Hover over the points to see the states and their change"},
+    "mark": {"type": "line","point": true, "strokeWidth": 2},
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "nominal",
+            "title": "Year",
+            "axis": {"labelAngle":0}
+        },
+        "y": {
+            "field": "MHDI_value",
+            "type": "quantitative",
+            "title": "Human Development Index",
+            "scale": {"domain":[0.73,0.91]}
+        },
+        "detail": {"field": "State", "type": "nominal"},
+        "color": {"field": "State", "type": "nominal","legend": null, "scale": {"scheme": "purples"}},
+        "tooltip": [
+            {"field": "State", "type": "nominal"},
+            {"field": "Year", "type": "nominal"},
+            {"field": "MHDI_value","type": "quantitative", "title": "Human Development Index","format": ".3f"},
+            {"field": "Change","type": "quantitative","title": "Change","format": ".3f"}
+        ]
+    }
+}
