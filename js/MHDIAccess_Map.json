@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 450,
+    "data": {"url": "data/my.json","format": {"type": "json","property": "features"}},
+    "params": [
+        {
+            "name": "SelectedYear",
+            "value": "2024",
+            "bind": {
+                "input": "select",
+                "options":["2023","2024"],
+                "name": "Year: "
+            }
+        }
+    ],
+    "transform": [
+        {"calculate": "datum.properties.name== 'Kuala Lumpur'? 'W.P. Kuala Lumpur': datum.properties.name== 'Putrajaya'? 'W.P. Putrajaya': datum.properties.name== 'Labuan'? 'W.P. Labuan':datum.properties.name","as":"CSV_State"},
+        {
+            "lookup": "CSV_State",
+            "from": {
+                "data": {"url": "data/MHDI_State_2024&23.csv"},
+                "key": "State",
+                "fields": ["2023","2024"]
+            }
+        },
+        {"calculate": "SelectedYear== '2023'? datum['2023']: datum['2024']","as":"Selected_MHDI"},
+        {"calculate": "toNumber(datum.Selected_MHDI)","as":"MHDI_value"}
+    ],
+    "title": {"text": "Human development index by state 2023-2024","subtitle": "*Select the year to compare MHDI across states"},
+    "projection": {"type": "mercator"},
+    "mark": {"type":"geoshape","stroke": "white","strokeWidth":1},
+    "encoding": {
+        "color": {"field":"MHDI_value","type": "quantitative","title": "MHDI","scale": {"scheme":"purples","domain": [0.73,0.91]}},
+        "tooltip": [
+            {"field": "CSV_State","type": "nominal","title": "State"},
+            {"field": "MHDI_value","type": "quantitative","title": "MHDI","format": ".3f"}
+        ]
+    }
+}

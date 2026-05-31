@@ -33,3 +33,7 @@ vegaEmbed("#MHDI_DigitalAccess_Gap", DigitalMHDIGap).then(function(result) {
 var DigitalAccessMap = "js/DigitalAccess_Map.json";
 vegaEmbed("#DigitalAccess_Map", DigitalAccessMap).then(function(result) {
 }).catch(console.error);
+
+var MHDIAccessMap = "js/MHDIAccess_Map.json";
+vegaEmbed("#MHDIAccess_Map", MHDIAccessMap).then(function(result) {
+}).catch(console.error);
