@@ -1,0 +1,44 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 450,
+    "data": {"url": "data/Household_internet_access&MHDI_2024.csv"},
+    "transform": [
+        {"calculate": "toNumber(datum.Household_Internet_access)","as": "Internet_access"},
+        {"calculate": "toNumber(datum.MHDI)","as": "MHDI_score"},
+        {
+            "window": [{"op": "rank","as": "Internet_rank"}],
+            "sort": [{"field": "Internet_access","order": "descending"}]
+        },
+        {
+            "window": [{"op": "rank","as": "MHDI_rank"}],
+            "sort": [{"field": "MHDI_score","order": "descending"}]
+        },
+        {"calculate": "datum.MHDI_rank- datum.Internet_rank","as": "Rank_gap"}
+    ],
+    "title": {"text": "Gap between internet access rank and MHDI rank","subtitle": "positive values mean household internet access ranks higher than human development index"},
+    "mark": {"type": "bar"},
+    "encoding": {
+        "y": {
+            "field": "State",
+            "type": "nominal",
+            "sort": {"field": "Rank_gap","order": "descending"},
+            "title": "State"
+        },
+        "x": {
+            "field": "Rank_gap",
+            "type": "quantitative",
+            "title": "Rank gap"
+        },
+        "color": {
+            "condition": {"test": "datum.Rank_gap>0","value": "purple"},
+            "value": "lightgrey"
+        },
+        "tooltip": [
+            {"field": "State","type": "nominal"},
+            {"field": "Internet_rank","type": "quantitative","title": "Household internet access rank"},
+            {"field": "MHDI_rank","type": "quantitative","title": "Human Development Index rank"},
+            {"field": "Rank_gap","type": "quantitative","title": "Gap"}
+        ]
+    }
+}

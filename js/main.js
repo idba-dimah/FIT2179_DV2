@@ -25,3 +25,7 @@ vegaEmbed("#MHDI_State_2024", MHDIState2024).then(function(result) {
 var MHDIChangeState = "js/MHDI_change_State.json";
 vegaEmbed("#MHDI_change_State", MHDIChangeState).then(function(result) {
 }).catch(console.error);
+
+var DigitalMHDIGap = "js/MHDI_DigitalAccess_Gap.json";
+vegaEmbed("#MHDI_DigitalAccess_Gap", DigitalMHDIGap).then(function(result) {
+}).catch(console.error);
