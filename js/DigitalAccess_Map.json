@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 450,
+    "data": {
+        "url": "data/my.json",
+        "format": {"type": "json","property": "features"}
+    },
+    "params": [
+        {
+            "name": "SelectedYear",
+            "value": 2025,
+            "bind": {
+                "input": "range",
+                "min": 2022,
+                "max": 2025,
+                "step": 1,
+                "name": "Year-"
+            }
+        },
+        {
+            "name": "SelectedAccess",
+            "value": "Household_Internet_access",
+            "bind": {
+                "input": "select",
+                "options": ["Household_Internet_access","Phone_access","Computer_access"],
+                "labels": ["Internet access","Phone access","Computer access"],
+                "name": "Access type-"
+            }
+        }
+    ],
+    "transform": [
+        {"calculate": "datum.properties.name== 'Kuala Lumpur'? 'W.P. Kuala Lumpur': datum.properties.name== 'Putrajaya'? 'W.P. Putrajaya': datum.properties.name== 'Labuan'? 'W.P. Labuan':datum.properties.name","as":"CSV_State"},
+        {"calculate": "datum.CSV_State+'-'+SelectedYear","as":"MapKey"},
+        {
+            "lookup": "MapKey",
+            "from": {
+                "data": {"url": "data/Digital_access_timeseries.csv"},
+                "key": "MapKey",
+                "fields": ["Year","Household_Internet_access","Phone_access","Computer_access"]
+            }
+        },
+        {"calculate": "SelectedAccess== 'Household_Internet_access'? datum.Household_Internet_access: SelectedAccess== 'Phone_access'? datum.Phone_access: datum.Computer_access","as":"Selected_value"},
+        {"calculate": "toNumber(datum.Selected_value)","as":"Access_value"},
+        {"calculate": "SelectedAccess=='Household_Internet_access'?'Internet access': SelectedAccess=='Phone_access'?'Phone access':'Computer access'","as":"Access_label"}
+    ],
+    "title": {"text":"Digital access by state 2022-2025","subtitle": "*Use the controls to compare Access type and Year"},
+    "projection": {"type": "mercator"},
+    "mark": {"type": "geoshape","stroke": "white","strokeWidth": 1},
+    "encoding": {
+        "color": {"field": "Access_value","type": "quantitative","title": "Access(%)","scale":{"scheme":"purples","domain":[70,100]}},
+        "tooltip": [
+            {"field": "CSV_State","type": "nominal","title": "State"},
+            {"field": "Year","type": "ordinal","title": "Year"},
+            {"field": "Access_label","type": "nominal","title": "Type"},
+            {"field": "Access_value","type": "quantitative","title": "Access(%)","format": ".2f"}
+        ]
+    }
+}
