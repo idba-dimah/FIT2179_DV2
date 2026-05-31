@@ -25,7 +25,7 @@
             "scale": {"domain":[89,100]}
         },
         "detail": {"field": "State","type": "nominal"},
-        "color": {"field": "State","type": "nominal","legend":null},
+        "color": {"field": "State","type": "nominal","legend":null, "scale": {"scheme": "purples"}},
 
         "tooltip": [
             {"field": "State","type": "nominal"},

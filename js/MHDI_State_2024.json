@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 400,
+    "data": {"url": "data/MHDI_State_2024&23.csv"},
+    "title": {"text": "Human development index by state 2024","subtitle": "Ranked from highest to lowest"},
+    "encoding": {
+        "y": {
+            "field": "State",
+            "type": "nominal",
+            "sort": {"field": "MHDI_2024","order": "descending"},
+            "title": "State"
+        },
+        "x": {
+            "field": "MHDI_2024",
+            "type": "quantitative",
+            "title": "Malaysia Human Development Index",
+            "scale": {"domain": [0.7,0.95]}
+        }
+    },
+    "layer": [
+        {
+            "mark": {"type": "point", "filled": true, "size": 250, "color": "purple"},
+            "encoding": {
+                "tooltip": [
+                    {"field": "State","type": "nominal"},
+                    {"field": "MHDI_2024","type": "quantitative","title": "HDI","format": ".3f"}
+                ]
+            }
+        },
+        {      
+            "mark": {"type": "text","fontSize": 12,"dx": 25},
+            "encoding": {
+                "text": {"field": "MHDI_2024","type": "quantitative","format": ".3f"}
+            }
+        }
+    ]
+}

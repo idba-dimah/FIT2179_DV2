@@ -17,3 +17,7 @@ vegaEmbed("#DigitalAccess_Time", DigitalTime).then(function(result) {
 var InternetChangeState = "js/Internet_change_state.json";
 vegaEmbed("#Internet_change_state", InternetChangeState).then(function(result) {
 }).catch(console.error);
+
+var MHDIState2024 = "js/MHDI_State_2024.json";
+vegaEmbed("#MHDI_State_2024", MHDIState2024).then(function(result) {
+}).catch(console.error);
