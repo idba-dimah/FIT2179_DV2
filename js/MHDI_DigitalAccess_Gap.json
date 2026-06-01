@@ -16,7 +16,7 @@
         },
         {"calculate": "datum.MHDI_rank- datum.Internet_rank","as": "Rank_gap"}
     ],
-    "title": {"text": "Gap between internet access rank and MHDI rank","subtitle": "positive values mean household internet access ranks higher than human development index"},
+    "title": {"text": "Gap between internet access rank and MHDI rank"},
     "mark": {"type": "bar"},
     "encoding": {
         "y": {

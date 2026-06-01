@@ -7,39 +7,128 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-  
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <section class="intro">
+        <h1>Malaysias digital divide: does access relate to wellbeing?</h1>
+        <p>
+            Malaysia is highly connected overall, but digital access is not distributed evenly across every state.
+            This visualisation explores whether states with stronger internet, phone, and computer access also tend to show higher human development.
+        </p>
+        <p class="introAbout">
+           <i>*From most recent data:</i>
+        </p>
+        <div class="OpeningInfo">
+            <div>
+            <h3>Highest internet access</h3>
+            <p class="OpeningVal">100.0%</p>
+            <p class="OpeningDesc">[W.P.] Kuala Lumpur & Putrajaya, 2025</p>
+            </div>
+
+            <div>
+            <h3>Lowest internet access</h3>
+            <p class="OpeningVal">91.6%</p>
+            <p class="OpeningDesc">Sabah, 2025</p>
+            </div>
+
+            <div>
+            <h3>Highest MHDI</h3>
+            <p class="OpeningVal">0.899</p>
+            <p class="OpeningDesc">[W.P.] Kuala Lumpur & Putrajaya, 2024</p>
+            </div>
+
+            <div>
+            <h3>Lowest MHDI</h3>
+            <p class="OpeningVal">0.763</p>
+            <p class="OpeningDesc">Kelantan, 2024</p>
+            </div>
+        </div>
+    </section>
     
-    <h1>Malaysia's Digital Divide</h1>
-    <h2>States where digital access is the strongest</h2>
-    <div id="InternetAccess_2025"></div>
-    <div id="DigitalAccess_2025"></div>
-<br>
-    <h2>Has digital access changed overtime?</h2>
-    <div id="DigitalAccess_Time"></div>
-<br>
-    <h2>Which states improved the most?</h2>
-    <div id="Internet_change_state"></div>
-<br>
-    <h2>Does access to internet link to wellbeing?</h2>
-    <div id="Internet_MHDI_2024"></div> 
-<br>
-    <h2>Where is human development higher?</h2>
-    <div id="MHDI_State_2024"></div>
-<br>
-    <h2>How has the MHDI changed?</h2>
-    <div id="MHDI_change_State"></div>
-<br>
-    <h2>Where does digital access not match wellbeing?</h2>
-    <div id="MHDI_DigitalAccess_Gap"></div>
-<br>
-    <h2>Where is digital access progressing?</h2>
+    <h2>Where is digital access strongest?</h2>
+    <p>
+        Even though Malaysias digital access is high, the level of access still varies by state and type of technology.
+        This map allows easy comparison of internet, phone, and computer access over time.
+    </p>
     <div id="DigitalAccess_Map"></div>
-<br>
+
+    <h2>How do states compare in internet access?</h2>
+    <p>
+        Although most states have high household internet access, they vary by state. We can see their ordering and we can notice that some states have similar values.
+        This is probably because of the similar network infrastructure around those areas. Sabah and Sarawak are lower than the leading federal territories, which makes sense due to the rural nature of east Malaysia.
+    </p>
+    <div id="InternetAccess_2025"></div>
+
+    <h2>Digital access is not only internet</h2>
+    <p>
+        Phone access is almost universal as seen with the overall darker shade. But computer access shows clearer differences between states. We can say that higher computer access states, have more workplaces and educational organizations
+        as computers are most usually used for productivity.
+        This suggests that digital divide isnt only about household internet access, but access to type of technology too. 
+    </p>
+    <div id="DigitalAccess_2025"></div>
+
+    <h2>Has digital access improved over time?</h2>
+    <p>
+        The line chart shows the national average trend across states. Digital access has generally improved from 2022 to 2025, but in varying amounts.
+        Phone access is already very high- changing very little over time. Internet access rises steadily, whilst computer access has the most varying change yearly.
+    </p>
+    <p>
+        The slope chart shows how each state changed individually. Sabah and Sarawak have improved significantly, but they still remain lower than other states. The most improved is Perlis(2.3%), while states that were already high had the least improvement.
+    </p>
+    <div id="ChartRow">
+        <div id="DigitalAccess_Time"></div>
+        <div id="Internet_change_state"></div>
+    </div>
+
     <h2>Where is wellbeing progressing?</h2>
-    <div id="MHDIAccess_Map"></div>
+    <p>
+        Human development index provides a broader view of wellbeing across states. As it has three main factors: long and healthy life, access to knowledge and decent standard of living. 
+        The map shows the spatial pattern of wellbeing across the states between 2023&24. The ranked chart shows the order of states to compare easily.
+    </p>
+    <div id="ChartRow">
+        <div id="MHDIAccess_Map"></div>
+        <div id="MHDI_State_2024"></div>
+    </div>
+    <p>
+        The slope chart shows whether the states improved or declined between 2023&24. Most improved state being Perak(by 0.049), whilst Sabah is the only state that declined.
+    </p>
+    <div id="MHDI_change_State"></div>
+
+    <h2>Does digital access relate to wellbeing?</h2>
+    <p>
+        The scatterplot compares household internet access with the Malaysian Human Development Index.
+        The upward trend suggests that, states with higher household internet access often have higher human development (positively correlated). But the spread of points shows that access alone does not explain wellbeing (correlation doesnt mean causation).
+    </p>
+    <div id="Internet_MHDI_2024"></div>
+
+    <h2>Where do access and wellbeing rankings not match?</h2>
+    <p>The rank gap chart compares each states internet access rank with its MHDI rank. To see where internet access and MHDI dont match up.</p>
+    <p>
+        A positive rank gap- The state ranks higher in internet access than in human development.
+        Negative rank gap- The state ranks lower in internet access than in human development.
+        Values close to zero mean the rankings are somewhat aligned.
+    </p>
+    <div id="MHDI_DigitalAccess_Gap"></div>
+    <p>
+        This shows that there are some states which is highly connected but rank lower in human development, while some others are vice-versa. 
+        This supports the finding from the scatterplot that Digital access does relate to wellbeing but there are other factors as well.
+    </p>
+    <div id="Conc">
+        <h2>Conclusion:</h2>
+        <p>
+            Malaysias digital access is strong overall- especially for phone and household internet access.
+            However, the divide becomes clearer when state rankings especially for computer access.
+            States with stronger digital access often have higher MHDI. But the rank gap chart shows that the relationship is not perfect.
+            Therefore, digital access does relate to wellbeing. But not properly, as other factors such as education, income, regional development play important roles.
+        </p>
+    </div>
+    <footer>
+    <p>Data sources: Department of Statistics Malaysia (ICT use and access 2025),(MHDI 2024)|SimpleMaps Malaysia (geoJSON maps)</p>
+    <p>Hamid Abdi. 35180412. FIT2179 DV2.</p>
+    </footer>
     <script src="js/main.js"></script>  
 </body>
 

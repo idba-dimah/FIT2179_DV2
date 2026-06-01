@@ -1,12 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 650,
-    "height": 450,
+    "width": 400,
+    "height": 350,
     "data": {"url": "data/my.json","format": {"type": "json","property": "features"}},
     "params": [
         {
             "name": "SelectedYear",
-            "value": "2024",
+            "value": "2023",
             "bind": {
                 "input": "select",
                 "options":["2023","2024"],

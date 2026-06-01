@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 650,
-    "height": 400,
+    "width": 400,
+    "height": 350,
     "data": {"url": "data/MHDI_State_2024&23.csv"},
     "title": {"text": "Human development index by state 2024","subtitle": "Ranked from highest to lowest"},
     "encoding": {

@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 650,
-    "height": 400,
+    "width": 300,
+    "height": 350,
     "data": {"url": "data/Digital_access_timeseries.csv"},
     "transform": [
         {
@@ -23,7 +23,7 @@
             "field": "Access_value",
             "type": "quantitative",
             "title": "Average access (%)",
-            "scale": {"domain": [70, 100]}
+            "scale": {"domain": [90, 100]}
         },
 
         "color": {

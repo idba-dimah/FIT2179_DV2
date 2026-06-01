@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f3ff;
+    color: #222;
+    line-height: 1.5;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+.intro {
+    background-color: white;
+    padding: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 18px;
+}
+
+h1 {
+    font-size: 42px;
+    line-height: 1.1;
+    color: #2f145f;
+    margin-bottom: 16px
+}
+
+h2 {
+    font-size: 28px;
+    color: #3f1d75;
+    margin-top: 45px;
+    margin-bottom: 8px;
+}
+
+p {font-size: 16px;}
+
+div[id] {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 18px;
+    margin-bottom: 35px;
+    border-radius: 20px;
+}
+
+.chartRow {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 35px
+}
+
+.OpeningInfo {
+    display: grid;
+    grid-template-columns:auto auto;
+    gap: 18px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.OpeningInfo div {
+    background-color: #f5efff;
+    padding: 18px;
+    border-radius: 14px;
+    border-left: 5px solid #6f3fb2;
+}
+
+.OpeningInfo h3 {
+    margin-top: 0;
+    color: #3f1d75;
+}
+
+.OpeningVal {
+    font-size: 30px;
+    font-weight: bold;
+    color: #4b1d95;
+    margin: 0;
+}
+
+.OpeningDesc {margin: 0;}
+.introAbout {font-size: 14px;}
+
+footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #d8c9ef;
+    color: #a19d9d;
+}
+
+footer p{
+    font-size: 12px;
+}
+
+#Conc {
+    display: block;
+    background-color: white;
+   
+    text-align: center;
+}
+
+#Conc h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+#Conc p {
+    max-width: 850px;
+    margin-left:120px ;
+    font-size: 17px;
+}
